@@ -1,0 +1,5 @@
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/CMakeFiles/edit_cache.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/CMakeFiles/rebuild_cache.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/test/CMakeFiles/test_bk_intersection.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/test/CMakeFiles/edit_cache.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/test/CMakeFiles/rebuild_cache.dir

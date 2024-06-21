@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -DNDEBUG -O3 -march=native -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/test_bk_intersection.dir/test_bk_intersection.cpp.o -o test_bk_intersection   -L/Users/jpcastillo/lib 
