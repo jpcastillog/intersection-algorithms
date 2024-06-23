@@ -81,3 +81,37 @@ loadSequences(string sequencesPath,
     }
     return sequences;
 }
+
+template<typename T>
+vector<vector<T>> loadOneSequence(string sequencesPath, vector<uint32_t> query){
+    vector<vector<T>> S(query.size());
+    ifstream in;
+    in.open(sequencesPath, ios::binary | ios::in);
+    if (!in.is_open()) {
+        cerr << "Can't open file:  " << sequencesPath << endl;
+        return S;
+    }
+    uint32_t _1, u, n;
+    uint32_t nIl = 0;
+    in.read(reinterpret_cast<char*>(&_1), sizeof(_1));
+    in.read(reinterpret_cast<char*>(&u), sizeof(u));
+    for (uint64_t i=0; i < query.size();) {
+        in.read(reinterpret_cast<char*>(&n), sizeof(n));
+        if (query[i] == nIl){
+            vector<T> seq(n);
+            for (uint32_t j=0; j < n; ++j) {
+                uint32_t x;
+                in.read(reinterpret_cast<char*>(&x), sizeof(x));
+                seq[j] = (T)x;
+            }
+            S[i] = seq;
+            ++i;
+        }
+        else
+            in.seekg(4*n, ios::cur);
+
+        ++nIl;
+    }
+    in.close();
+    return S;
+}

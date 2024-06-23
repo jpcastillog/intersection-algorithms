@@ -4,7 +4,7 @@
 using namespace std;
 
 template <typename T>
-uint64_t binarySearch(vector<T> &set, uint64_t low, uint64_t high, T x) {
+uint64_t binarySearch3Branches(vector<T> &set, uint64_t low, uint64_t high, T x) {
 	while (low <= high)
 	{
 		// int mid = low + (high - low) / 2;
@@ -30,6 +30,25 @@ uint64_t binarySearch(vector<T> &set, uint64_t low, uint64_t high, T x) {
 }
 
 template <typename T>
+uint64_t binarySearch2Branches(vector<T> &set, uint64_t low, uint64_t high, T x){
+    long long int mid;
+    while (low < high){
+        mid = (low + high)/2; 
+        if (x <= set[mid]){
+            high = mid; 
+        }
+        else {
+            low = mid+1;
+        }
+    }
+    if (set[low] == x)
+        return low;
+    if (low > set.size()-1)
+        return high;
+    return low;
+}
+
+template <typename T>
 uint64_t exponentialSearch(vector<T> &set, T x, uint64_t initial_position) { 
     uint64_t n = set.size();
     if (set[initial_position] == x) 
@@ -42,5 +61,5 @@ uint64_t exponentialSearch(vector<T> &set, T x, uint64_t initial_position) {
     uint64_t i = initial_position + 1; 
     while (i < n && set[i] <= x) 
         i = i*2; 
-    return binarySearch(set, i/2, min(i, n-1), x); 
+    return binarySearch2Branches<T>(set, i/2, min(i, n-1), x); 
 }

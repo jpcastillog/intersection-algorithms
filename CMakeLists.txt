@@ -24,4 +24,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 # # target_link_libraries(fastTrieIntersection PUBLIC sdsl divsufsort divsufsort64)
 
 add_subdirectory(test)
+add_subdirectory(tools)
 # add_subdirectory(tools)

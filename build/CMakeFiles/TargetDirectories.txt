@@ -3,3 +3,6 @@
 /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/test/CMakeFiles/test_bk_intersection.dir
 /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/test/CMakeFiles/edit_cache.dir
 /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/test/CMakeFiles/rebuild_cache.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/tools/CMakeFiles/bk_intersection.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/tools/CMakeFiles/edit_cache.dir
+/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/tools/CMakeFiles/rebuild_cache.dir

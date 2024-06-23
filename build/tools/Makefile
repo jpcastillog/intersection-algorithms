@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/CMakeFiles /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/CMakeFiles /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/tools//CMakeFiles/progress.marks
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,44 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named test_bk_intersection
+# Convenience name for target.
+tools/CMakeFiles/bk_intersection.dir/rule:
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/CMakeFiles/bk_intersection.dir/rule
+.PHONY : tools/CMakeFiles/bk_intersection.dir/rule
 
-# Build rule for target.
-test_bk_intersection: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_bk_intersection
-.PHONY : test_bk_intersection
-
-# fast build rule for target.
-test_bk_intersection/fast:
-	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_bk_intersection.dir/build.make test/CMakeFiles/test_bk_intersection.dir/build
-.PHONY : test_bk_intersection/fast
-
-#=============================================================================
-# Target rules for targets named bk_intersection
-
-# Build rule for target.
-bk_intersection: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bk_intersection
+# Convenience name for target.
+bk_intersection: tools/CMakeFiles/bk_intersection.dir/rule
 .PHONY : bk_intersection
 
 # fast build rule for target.
 bk_intersection/fast:
-	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/bk_intersection.dir/build.make tools/CMakeFiles/bk_intersection.dir/build
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f tools/CMakeFiles/bk_intersection.dir/build.make tools/CMakeFiles/bk_intersection.dir/build
 .PHONY : bk_intersection/fast
+
+bk_intersection.o: bk_intersection.cpp.o
+.PHONY : bk_intersection.o
+
+# target to build an object file
+bk_intersection.cpp.o:
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f tools/CMakeFiles/bk_intersection.dir/build.make tools/CMakeFiles/bk_intersection.dir/bk_intersection.cpp.o
+.PHONY : bk_intersection.cpp.o
+
+bk_intersection.i: bk_intersection.cpp.i
+.PHONY : bk_intersection.i
+
+# target to preprocess a source file
+bk_intersection.cpp.i:
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f tools/CMakeFiles/bk_intersection.dir/build.make tools/CMakeFiles/bk_intersection.dir/bk_intersection.cpp.i
+.PHONY : bk_intersection.cpp.i
+
+bk_intersection.s: bk_intersection.cpp.s
+.PHONY : bk_intersection.s
+
+# target to generate assembly for a file
+bk_intersection.cpp.s:
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(MAKE) $(MAKESILENT) -f tools/CMakeFiles/bk_intersection.dir/build.make tools/CMakeFiles/bk_intersection.dir/bk_intersection.cpp.s
+.PHONY : bk_intersection.cpp.s
 
 # Help Target
 help:
@@ -151,7 +163,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... bk_intersection"
-	@echo "... test_bk_intersection"
+	@echo "... bk_intersection.o"
+	@echo "... bk_intersection.i"
+	@echo "... bk_intersection.s"
 .PHONY : help
 
 
@@ -163,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/jpcastillo/Documents/GitHub/intersection-algorithms/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
