@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-
+#include <algorithm>
 using namespace std;
 
 template <typename T>
@@ -83,14 +83,14 @@ loadSequences(string sequencesPath,
 }
 
 template<typename T>
-vector<vector<T>> loadOneSequence(string sequencesPath, vector<uint32_t> query){
+vector<vector<T>> loadOneSequence(istream &in, vector<uint32_t> query){
     vector<vector<T>> S(query.size());
-    ifstream in;
-    in.open(sequencesPath, ios::binary | ios::in);
-    if (!in.is_open()) {
-        cerr << "Can't open file:  " << sequencesPath << endl;
-        return S;
-    }
+    // ifstream in;
+    // in.open(sequencesPath, ios::binary | ios::in);
+    // if (!in.is_open()) {
+    //     cerr << "Can't open file:  " << sequencesPath << endl;
+    //     return S;
+    // }
     uint32_t _1, u, n;
     uint32_t nIl = 0;
     in.read(reinterpret_cast<char*>(&_1), sizeof(_1));
@@ -101,8 +101,8 @@ vector<vector<T>> loadOneSequence(string sequencesPath, vector<uint32_t> query){
             vector<T> seq(n);
             for (uint32_t j=0; j < n; ++j) {
                 uint32_t x;
-                in.read(reinterpret_cast<char*>(&x), sizeof(x));
-                seq[j] = (T)x;
+                in.read(reinterpret_cast<char*>(seq.data()), n*sizeof(T));
+                // seq[j] = (T)x;
             }
             S[i] = seq;
             ++i;
@@ -112,6 +112,6 @@ vector<vector<T>> loadOneSequence(string sequencesPath, vector<uint32_t> query){
 
         ++nIl;
     }
-    in.close();
+    // in.close();
     return S;
 }

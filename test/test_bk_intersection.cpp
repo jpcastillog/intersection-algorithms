@@ -62,6 +62,7 @@ void performIntersections(string sequencesPath, string queryPath) {
 
     std::cout << "Number of queries: " << nq << std::endl;
     std::cout <<"Avg time execution: " << (double)(total_time*1e-3)/(nq) << "[ms]" << std::endl;
+    std::cout << "Total time execution: " << total_time << "micro seconds\n";
 }
 
 int main(int argc, char const *argv[]) {
