@@ -2,8 +2,11 @@
 #include <searchAlgorithms.hpp>
 
 using namespace std;
+
+
 template <typename T>
-void barbayKenyon(vector<vector<T>> &sets, uint16_t k, vector<T> &intersection){
+vector<uint64_t> barbayKenyon(vector<T> &sets, uint16_t k){
+    vector<uint64_t> intersection;
     vector<uint64_t> positions(k, 0);
     // eliminator element in [0,0], first element of first set
     uint64_t e = sets[0][0];
@@ -34,7 +37,7 @@ void barbayKenyon(vector<vector<T>> &sets, uint16_t k, vector<T> &intersection){
             if (next_set_pos == next_set_size-1){
             // if (pos + 1 > next_set_size - 1){
                 e = -1;
-                return;
+                return intersection;
             }
 
             // e it's part of intersection      
@@ -56,4 +59,5 @@ void barbayKenyon(vector<vector<T>> &sets, uint16_t k, vector<T> &intersection){
         i = (i+1)%k;
         size = sets[i].size();
     }
+    return intersection;
 }

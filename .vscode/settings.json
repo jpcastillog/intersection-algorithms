@@ -5,6 +5,9 @@
         "*.tcc": "cpp",
         "fstream": "cpp",
         "chrono": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "map": "cpp",
+        "typeinfo": "cpp",
+        "istream": "cpp"
     }
 }

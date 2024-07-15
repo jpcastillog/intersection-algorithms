@@ -1,4 +1,4 @@
-# Install script for directory: /home/jpcastillog/Documentos/GitHub/intersection-algorithms
+# Install script for directory: /Users/jpcastillo/Documents/GitHub/intersection-algorithms
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,11 +27,6 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
-endif()
-
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -39,13 +34,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/jpcastillog/Documentos/GitHub/intersection-algorithms/build/test/cmake_install.cmake")
-  include("/home/jpcastillog/Documentos/GitHub/intersection-algorithms/build/tools/cmake_install.cmake")
+  include("/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/tools/cmake_install.cmake")
 
 endif()
 
@@ -57,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jpcastillog/Documentos/GitHub/intersection-algorithms/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/jpcastillo/Documents/GitHub/intersection-algorithms/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

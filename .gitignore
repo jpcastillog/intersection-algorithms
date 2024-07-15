@@ -31,4 +31,6 @@
 *.out
 *.app
 
-build
+# visual studio code files
+/.vscode
+/build

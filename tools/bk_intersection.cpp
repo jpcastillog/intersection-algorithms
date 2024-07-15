@@ -4,20 +4,17 @@
 #include <barbayAndKenyon.hpp>
 #include <aux.hpp>
 #include <chrono>
+#include <sdsl/vectors.hpp>
 
 using namespace std;
 
-template<typename T>
-void performIntersections(string sequencesPath, string queryPath, uint64_t batch_size) {
+template<typename TQ, typename TS>
+void performIntersections(string sequencesPath, string queryPath, 
+                          uint64_t batch_size) {
     uint64_t trep = 10;
-    vector<vector<uint32_t>> queries;
-    // map<T, vector<T>> sequences;
+    vector<vector<TQ>> queries;
     
-    queries = loadQueryLog<uint32_t>(queryPath);
-    
-    
-    // ifstream inSeq;
-    // inSeq.open(sequencesPath, ios::binary | ios::in);
+    queries = loadQueryLog<TQ>(queryPath);
 
     cout << "Computing queries...\n";
     uint64_t nq = 0;
@@ -26,22 +23,23 @@ void performIntersections(string sequencesPath, string queryPath, uint64_t batch
     for(uint64_t b = 0; b < queries.size(); b+=batch_size) {
         cout << "Batch i: "<< i_batch << "\n";
         vector<vector<uint32_t>> Qbatch;
-        Qbatch.assign(&queries[b], &queries[min(b+batch_size, queries.size())]);
-        map<uint32_t, vector<T>> sequences = loadSequences<T>(sequencesPath, Qbatch);
+        Qbatch.assign(&queries[b], &queries[std::min((uint64_t)(b+batch_size), (uint64_t)(queries.size()))]);
+        map<TQ, TS> sequences = loadSequences<TQ, TS>(sequencesPath, Qbatch);
         cout << "Sequences loaded succefully, Total: " << sequences.size() << endl;
         for (auto q: Qbatch) {
-            vector<vector<T>> Qseq;
+            // vector<vector<T>> Qseq;
+            vector<TS> Qseq;
             for (auto i: q){
                 Qseq.push_back(sequences[i]);
             }
             // vector<vector<T>> Qseq = loadOneSequence<T>(inSeq, q);
             // inSeq.seekg(0, ios::beg);
-            vector<T> intersection;
+            vector<uint64_t> intersection;
             if (Qseq.size() <= 16){
                 uint64_t time_10 = 0;
                 for(uint32_t rep = 0; rep < trep; ++rep){
                     auto start = std::chrono::high_resolution_clock::now();
-                    barbayKenyon<T>(Qseq, Qseq.size(), intersection);
+                    intersection = barbayKenyon<TS>(Qseq, Qseq.size());
                     auto end = std::chrono::high_resolution_clock::now();
                     auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
                     auto time = elapsed.count();
@@ -87,12 +85,15 @@ int main(int argc, char const *argv[]) {
             ++i;
             batch_size = std::stoull(argv[i]);
         }
-
     } 
     cout << "-> Batch size: " << batch_size << "\n";
     std::string sequences_filename = std::string(argv[1]);
     std::string querylog_filename   = std::string(argv[2]);
-    performIntersections<uint32_t>(sequences_filename, querylog_filename, batch_size);
+    if (sdsl_int_v){
+        performIntersections<uint32_t, sdsl::int_vector<>>(sequences_filename, querylog_filename, batch_size);
+    }
+    else
+        performIntersections<uint32_t, vector<uint32_t>>(sequences_filename, querylog_filename, batch_size);
     
     return 0;
 }

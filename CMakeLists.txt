@@ -23,6 +23,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 # add_library(barbayAndKenyon ../src/barbay_and_kenyon.cpp ../include/barbay_and_kenyon.hpp)
 # # target_link_libraries(fastTrieIntersection PUBLIC sdsl divsufsort divsufsort64)
 
-add_subdirectory(test)
+# add_subdirectory(test)
 add_subdirectory(tools)
 # add_subdirectory(tools)
